@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectTheme, selectLoading, selectError } from 'redux/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
+import { selectTheme, selectLoading, selectError } from 'redux/contacts/selectors';
 import ContactsForm from 'components/Form';
 import Loader from 'components/Loader';
 import ThemeBtn from 'components/ThemeBtn';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTheme } from 'redux/selectors';
-import { setTheme } from 'redux/themeSlice';
+import { selectTheme } from 'redux/contacts/selectors';
+import { setTheme } from 'redux/theme/themeSlice';
 import { Toggle, ThemeSwitch } from './ThemeBtn.styled';
 import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi';
 import { IconContext } from 'react-icons';

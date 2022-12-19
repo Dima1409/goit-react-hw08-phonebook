@@ -8,9 +8,9 @@ import {
   CallTo,
   MailTo,
 } from './ListContact.styled';
-import { selectContacts, selectByFilter, selectLoading } from 'redux/selectors';
+import { selectContacts, selectByFilter, selectLoading } from 'redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import { AiTwotoneDelete, AiOutlinePhone, AiOutlineMail } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 

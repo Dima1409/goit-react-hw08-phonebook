@@ -64,30 +64,6 @@ height: 30px;
     animation-iteration-count: infinite;
 }
 `
-const MailTo = styled.a`
-display: flex;
-justify-content: center;
-align-items: center;
-margin-left: 5px;
-width: 20px;
-height: 20px;
-border: none;
-cursor: pointer;
-color: ${(props)=>props.theme.text};
-@media screen and (min-width: 768px) {
-width: 30px;
-height: 30px;  
-}
-& > svg {
-    transition: all 0.3s;
-}
-&:hover > svg {
-    fill: orange;
-    animation-name: ${animDelete};
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-}
-`
 const DeleteButton = styled.button`
 display: flex;
 justify-content: center;
@@ -119,4 +95,4 @@ font-size: 18px;
 }
 `
 
-export { List, ListItem, Number, DeleteButton, ItemInfo, CallTo, MailTo};
+export { List, ListItem, Number, DeleteButton, ItemInfo, CallTo};

@@ -6,19 +6,17 @@ import {
   DeleteButton,
   ItemInfo,
   CallTo,
-  MailTo,
 } from './ListContact.styled';
-import { selectContacts, selectLoading } from 'redux/contacts/selectors';
-import { selectByFilter } from 'redux/filter/selectors';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
-import { AiTwotoneDelete, AiOutlinePhone, AiOutlineMail } from 'react-icons/ai';
+import { AiTwotoneDelete, AiOutlinePhone } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
+import useContactSelectors from 'hooks/useContactSelectors';
+import useFilterSelectors from 'hooks/useFilterSelectors';
 
 const ListContact = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectByFilter);
-  const loading = useSelector(selectLoading);
+  const {contacts, isLoading} = useContactSelectors();
+ const {filtered} = useFilterSelectors()
   const dispatch = useDispatch();
 
   const onDeleteItem = id => {
@@ -26,7 +24,7 @@ const ListContact = () => {
   };
 
   const getSortContacts = () => {
-    const normalizedValue = filter.toLowerCase().trim();
+    const normalizedValue = filtered.toLowerCase().trim();
     return contacts.filter(elem =>
       elem.name.toLowerCase().includes(normalizedValue)
     );
@@ -39,7 +37,7 @@ const ListContact = () => {
     <List>
       {sortedContacts.length === 0
         ? null
-        : sortedContacts.map(({ id, name, number, email }, index) => {
+        : sortedContacts.map(({ id, name, number }, index) => {
             return (
               <ListItem key={id}>
                 <ItemInfo>
@@ -52,13 +50,8 @@ const ListContact = () => {
                   <CallTo href={`tel:${number}`}>
                     <AiOutlinePhone />
                   </CallTo>
-                  {email ? (
-                    <MailTo href={`mailto:${email}`}>
-                      <AiOutlineMail />
-                    </MailTo>
-                  ) : null}
                   <DeleteButton
-                    disabled={loading}
+                    disabled={isLoading}
                     onClick={() => onDeleteItem(id)}
                   >
                     <AiTwotoneDelete />

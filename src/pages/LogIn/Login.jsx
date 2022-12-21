@@ -2,10 +2,12 @@ import LoginForm from "components/LoginForm";
 
 const LogIn = () => {
     return (
-        <div>
+      <>
+      <div>
           <title>Login</title>
         <LoginForm/>  
         </div>
+      </>
     );
 };
 

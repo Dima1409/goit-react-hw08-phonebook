@@ -1,8 +1,8 @@
 import { Form, LabelForm, LabelInput, ButtonSubmit } from 'components/Form/Form.styled';
 import { useNavigate, useParams} from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+// import { useDispatch} from 'react-redux';
 import { Overlay, Modal } from './ContactEditorForm.styled';
-import { editContact} from 'redux/contacts/operations';
+// import { editContact} from 'redux/contacts/operations';
 import useContactSelectors from 'hooks/useContactSelectors';
 
 const ContactEditorForm = () => {
@@ -14,11 +14,11 @@ const ContactEditorForm = () => {
   const navigate = useNavigate();
   const closeModal= () => navigate('/contacts');
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const onEditContact = id => {
-    dispatch(editContact(id));
-  };
+  // const onEditContact = id => {
+  //   dispatch(editContact(id));
+  // };
 
 
     // const handleSubmit = async (values, actions) => {

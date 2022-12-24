@@ -1,7 +1,7 @@
 import useAuth from "hooks/useAuth";
 import { useDispatch } from "react-redux";
-import { logOut } from "redux/auth/operations";
-import { ButtonSubmit } from "components/Form/Form.styled";
+import { logOut } from "redux/auth/operations"
+import { AiOutlineExport } from "react-icons/ai";
 
 const UserMenu = () => {
  const dispatch = useDispatch();
@@ -9,8 +9,8 @@ const UserMenu = () => {
 
  return (
     <div style={{display: 'flex', justifyContent: 'space-between', marginLeft: 'auto', alignItems: 'center'}}>
-        <p style={{marginRight: '6px'}}>{user.name}</p>
-        <ButtonSubmit onClick={()=>dispatch(logOut())}>Logout</ButtonSubmit>
+        <p style={{marginRight: '6px', fontSize: '22px'}}>{user.name}</p>
+        <button style={{margin: '0', padding: '6px', fontSize: '16px'}} onClick={()=>dispatch(logOut())}><AiOutlineExport/> Logout</button>
     </div>
  );
 };

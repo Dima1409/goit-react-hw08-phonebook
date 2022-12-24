@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
 import { Overlay, Modal } from './Modal.styled';
-import { Form, LabelForm, LabelInput, ButtonSubmit } from '../Form/Form.styled';
+import { Form, LabelForm, LabelInput, ButtonSubmit } from 'components/Form/Form.styled';
 import { selectContacts } from 'redux/contacts/selectors';
 import { editContact } from 'redux/contacts/operations';
 

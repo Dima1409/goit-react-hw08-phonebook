@@ -1,38 +1,46 @@
-import Form from "components/Form";
-import Loader from "components/Loader";
-import ListContact from "components/ListContact";
-import SearchInput from "components/SearchInput";
-import { ContainerList, ListTitle, ListIsEmpty } from "components/App/App.styled";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import useAuth from "hooks/useAuth";
+import Form from 'components/Form';
+import Loader from 'components/Loader';
+import ListContact from 'components/ListContact';
+import SearchInput from 'components/SearchInput';
+import {
+  ContainerList,
+  ListTitle,
+  ListIsEmpty,
+} from 'components/App/App.styled';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import useAuth from 'hooks/useAuth';
 import useSelectors from 'hooks/useContactSelectors';
-import { fetchContacts } from "redux/contacts/operations";
-import { Heading, FormTitle} from "components/App/App.styled";
-import ThemeBtn from "components/ThemeBtn";
+import { fetchContacts } from 'redux/contacts/operations';
+import { Heading, FormTitle } from 'components/App/App.styled';
+import ThemeBtn from 'components/ThemeBtn';
 
-const Phonebook = () => {
-    const {isLoading, isError} = useSelectors();
-    const {isLoggedIn} = useAuth();
-   const dispatch = useDispatch();
+export default function Phonebook () {
+  const { isLoading, isError } = useSelectors();
+  const { isLoggedIn } = useAuth();
+  const dispatch = useDispatch();
 
-   useEffect(() => {
+  useEffect(() => {
     dispatch(fetchContacts());
-   },[dispatch]);
+  }, [dispatch]);
 
-   return (
+  return (
     <>
-    {isLoggedIn ? (
-    <>
-    <Heading>
+      {isLoggedIn ? (
+        <>
+          <Heading>
             <FormTitle>Phonebook</FormTitle>
             <ThemeBtn />
-    </Heading>
-    <Form/>
-    <ContainerList>
+          </Heading>
+          <Form />
+          <ContainerList>
             <ListTitle>Contacts</ListTitle>
             {fetchContacts().length > 0 ? (
-              <SearchInput></SearchInput>
+              <>
+              <SearchInput/>
+              <ListContact />
+              </>
+              
             ) : (
               <ListIsEmpty>
                 Your list is empty... Please add a new contact
@@ -40,12 +48,13 @@ const Phonebook = () => {
             )}
             {isLoading && !isError && <Loader />}
             {isError && <div style={{ color: 'red' }}>loading error!</div>}
-            <ListContact></ListContact>
+            
           </ContainerList>
-          </>) : (<>please login</>)}
-    
+        </>
+      ) : (
+        <>please login</>
+      )}
     </>
-    
-   )
-}
-export default Phonebook;
+  );
+};
+// export default Phonebook;

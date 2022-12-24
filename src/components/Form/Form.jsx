@@ -7,7 +7,6 @@ import { Form, LabelForm, LabelInput, ButtonSubmit } from './Form.styled';
 export default function ContactsForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [email, setEmail] = useState('');
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -16,7 +15,6 @@ export default function ContactsForm() {
     let contact = {
       name: name,
       number: number,
-      email: email,
     };
     const someCopyItem = contacts.some(
       elem => elem.name.toLowerCase() === name.toLowerCase()
@@ -34,9 +32,6 @@ export default function ContactsForm() {
       case 'name':
         setName(value);
         break;
-      case 'email':
-        setEmail(value);
-        break;
       case 'number':
         setNumber(value);
         break;
@@ -48,14 +43,12 @@ export default function ContactsForm() {
   const DefaultValue = () => {
     setName('');
     setNumber('');
-    setEmail('');
   };
 
   return (
     <>
       <Form onSubmit={SubmitForm}>
-        <LabelForm>Name</LabelForm>
-        <LabelInput
+        <LabelForm>Name<LabelInput
           value={name}
           type="text"
           name="name"
@@ -63,10 +56,10 @@ export default function ContactsForm() {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-        ></LabelInput>
+        ></LabelInput></LabelForm>
+        
 
-        <LabelForm>Number</LabelForm>
-        <LabelInput
+        <LabelForm>Number<LabelInput
           value={number}
           type="tel"
           name="number"
@@ -74,17 +67,7 @@ export default function ContactsForm() {
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-        ></LabelInput>
-
-        <LabelForm>Email</LabelForm>
-        <LabelInput
-          value={email}
-          type="email"
-          name="email"
-          onChange={InputChange}
-          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-          title="Email address must contain the '@' symbol For example dmytrolevchenko22@gmail.com"
-        ></LabelInput>
+        ></LabelInput></LabelForm>        
 
         <ButtonSubmit type="submit" disabled={!name || !number}>
           Add contact

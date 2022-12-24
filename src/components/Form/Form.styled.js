@@ -4,14 +4,21 @@ const Form = styled.form`
 background-color: ${(props)=>props.theme.main};
 display: flex;
 flex-direction: column;
-padding: 0 10px;
+padding: 20px 10px;
 margin: 0 auto;
 border-radius: 8px;
+@media screen and (min-width: 768px) {
+max-width: 40%;
+padding: 40px 20px;
+}
 `;
 const LabelForm = styled.label`
 font-size: 22px;
 text-align: start;
 margin-bottom: 5px;
+display: flex;
+justify-content: space-between;
+align-items: center;
 `;
 
 const LabelInput = styled.input`
@@ -19,10 +26,16 @@ max-width: 80%;
 padding: 6px;
 font-size: 14px;
 outline: none;
-border: none;
 border-radius: 4px;
 color: ${(props)=>props.theme.text};
 background-color: ${(props)=>props.theme.input};
+&:invalid {
+    border: 1px solid red;
+}
+&:valid {
+    border: 1px solid green;
+}
+
 @media screen and (min-width: 768px) {
 max-width: 60%;
 font-size: 16px;

@@ -2,13 +2,18 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const StyledLink = styled(NavLink)`
-  color: black;
+  color: ${(props)=>props.theme.text};
+  text-decoration: none;
+  background-color: ${(props)=>props.theme.main};
+  padding: 4px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
   &:not(:last-child) {
-    margin-right: 10px;
+    margin-right: 20px;
   }
 
   &.active {
-    color: orange;
+    box-shadow: 0 0 8px ${(props)=>props.theme.text}; 
   }
 `;
 

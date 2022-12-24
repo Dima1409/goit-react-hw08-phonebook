@@ -1,6 +1,6 @@
 import styled, {keyframes} from 'styled-components';
 
-const List = styled.ol`
+const List = styled.ul`
 text-align: start;
 margin-bottom: 40px;
 `;
@@ -85,6 +85,27 @@ cursor: pointer;
     animation-iteration-count: infinite;
 }
 `
+const EditButton = styled.button`
+display: flex;
+justify-content: center;
+align-items: center;
+margin-left: 5px;
+background-color: transparent;
+border: none;
+color:${(props)=>props.theme.text};
+cursor: pointer;
+& > svg {
+    transition: all 0.3s;
+}
+&:hover:not(:disabled) > svg, 
+&:focus > svg, 
+&:active > svg{
+    color: #9c1111;
+    animation-name: ${animDelete};
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+`
 const ItemInfo = styled.p`
 display: flex;
 justify-content: space-between;
@@ -95,4 +116,4 @@ font-size: 18px;
 }
 `
 
-export { List, ListItem, Number, DeleteButton, ItemInfo, CallTo};
+export { List, ListItem, Number, DeleteButton, EditButton, ItemInfo, CallTo};

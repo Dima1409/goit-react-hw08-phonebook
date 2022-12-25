@@ -35,17 +35,6 @@ export const editContact = createAsyncThunk('contacts/editContact', async (id, t
     }
 })
 
-// export const getContactById = createAsyncThunk('contacts/getContactById', async (id, thunkApi) => {
-//     try {
-// const response = await axios.get(`/contacts/${id}`);
-// console.log(response.data, '--------ID RESPONSE')
-// return response.data;
-//     }
-//     catch(e) {
-// return thunkApi.rejectWithValue(e.message, '-------ID ERROR');
-//     }
-// });
-
 export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, thunkApi) => {
     try {
         const response = await axios.delete(`/contacts/${id}`)

@@ -1,11 +1,11 @@
-import { StyledLink } from "./AuthNav.styled";
+import { StyledLink, AuthMenu } from "./AuthNav.styled";
 
 const AuthNav = () => {
     return (
-      <div>
-        <StyledLink to='/register'>Register</StyledLink>
-        <StyledLink to='/login'>Log in</StyledLink>
-    </div>  
+      <AuthMenu>
+        <StyledLink to='/register'><span>Register</span></StyledLink>
+        <StyledLink to='/login'><span>Log In</span></StyledLink>
+    </AuthMenu>  
     )
 };
 

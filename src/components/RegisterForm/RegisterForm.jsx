@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { AiTwotoneEyeInvisible, AiTwotoneEye } from "react-icons/ai";
 import { register } from 'redux/auth/operations';
 import {
   Form,
@@ -7,12 +8,20 @@ import {
   LabelInput,
   ButtonSubmit,
 } from 'components/Form/Form.styled';
+import { PassButton } from 'components/LoginForm/LoginForm.styled';
+
+
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [show, setShow] = useState(true);
+
+    const showHidePassword = (e) => {
+        setShow(!show);
+      };
 
   const InputChange = e => {
     const { name, value } = e.currentTarget;
@@ -56,7 +65,8 @@ const RegisterForm = () => {
       </LabelForm>
       <LabelForm>
         password
-        <LabelInput type="password" name="password" value={password} onChange={InputChange} pattern=".{4,16}" title="Please enter between 4 and 10 characters. For example '1234abcd'," required/>
+        <LabelInput type={show ? 'password' : 'text'} name="password" value={password} onChange={InputChange} pattern=".{4,16}" title="Please enter between 4 and 10 characters. For example '1234abcd'," required/>
+        <PassButton type="button" onClick={showHidePassword}>{show ? <AiTwotoneEyeInvisible/> : <AiTwotoneEye/>}</PassButton>
       </LabelForm>
       <ButtonSubmit type="submit" disabled={!name || !email || !password}>register</ButtonSubmit>
     </Form>

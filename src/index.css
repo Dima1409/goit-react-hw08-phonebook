@@ -1,12 +1,17 @@
 @import-normalize; /* bring in normalize.css styles */
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Passion+One&family=Permanent+Marker&family=Rubik+Vinyl&display=swap');
+/* font-family: 'Lato', sans-serif;
+font-family: 'Passion One', cursive;
+font-family: 'Permanent Marker', cursive;
+font-family: 'Rubik Vinyl', cursive; */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Courgette', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+input, a, button {
+  font-family: 'Lato', sans-serif;
 }
 
 code {

@@ -1,12 +1,20 @@
 import { useDispatch } from "react-redux";
 import { logIn } from "redux/auth/operations";
 import { useState } from "react";
+import { AiTwotoneEyeInvisible, AiTwotoneEye } from "react-icons/ai";
 import { Form, LabelForm, LabelInput, ButtonSubmit } from "components/Form/Form.styled";
+import { PassButton } from "./LoginForm.styled";
+
 
 const LoginForm = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [show, setShow] = useState(true);
+
+    const showHidePassword = (e) => {
+        setShow(!show);
+      };
 
     const InputChange = e => {
         const { name, value } = e.currentTarget;
@@ -21,6 +29,8 @@ const LoginForm = () => {
             return;
         }
       };
+    
+      
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -31,8 +41,12 @@ const LoginForm = () => {
                 password: form.elements.password.value,
             })
         );
-        form.reset();
+        DefaultValue();
     };
+    const DefaultValue = () => {
+        setEmail('');
+        setPassword('');
+      };
 
     return (
         <>
@@ -43,7 +57,8 @@ const LoginForm = () => {
             </LabelForm>
             <LabelForm>
                 password
-                <LabelInput type='password' name='password' value={password} onChange={InputChange} pattern=".{4,16}" title="Please enter between 4 and 10 characters. For example '1234abcd'," required/>
+                <LabelInput type={show ? 'password' : 'text'} name='password' value={password} onChange={InputChange} pattern=".{4,16}" title="Please enter between 4 and 10 characters. For example '1234abcd'," required/>
+                <PassButton type="button" onClick={showHidePassword}>{show ? <AiTwotoneEyeInvisible/> : <AiTwotoneEye/>}</PassButton>
             </LabelForm>
             <ButtonSubmit type='submit' disabled={!email || !password}>log in</ButtonSubmit>
         </Form>

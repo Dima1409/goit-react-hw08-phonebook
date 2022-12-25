@@ -6,6 +6,7 @@ display: flex;
 flex-direction: column;
 padding: 20px 10px;
 margin: 0 auto;
+margin-bottom: 12px;
 border-radius: 8px;
 @media screen and (min-width: 768px) {
 max-width: 40%;
@@ -13,16 +14,20 @@ padding: 40px 20px;
 }
 `;
 const LabelForm = styled.label`
-font-size: 22px;
+font-size: 16px;
 text-align: start;
 margin-bottom: 5px;
 display: flex;
-justify-content: space-between;
+justify-content: end;
 align-items: center;
+@media screen and (min-width: 768px) {
+font-size: 22px;
+}
 `;
 
 const LabelInput = styled.input`
-max-width: 80%;
+margin-left: 10px;
+width: 100%;
 padding: 6px;
 font-size: 14px;
 outline: none;
@@ -30,7 +35,7 @@ border-radius: 4px;
 color: ${(props)=>props.theme.text};
 background-color: ${(props)=>props.theme.input};
 &:invalid {
-    border: 1px solid red;
+    border: 1px solid orange;
 }
 &:valid {
     border: 1px solid green;
@@ -46,7 +51,7 @@ max-width: 50%;
 `;
 
 const ButtonSubmit = styled.button`
-margin: 10px 0;
+margin: 10px auto;
 padding: 6px;
 color: #13132e;
 background-color: #ccca41;

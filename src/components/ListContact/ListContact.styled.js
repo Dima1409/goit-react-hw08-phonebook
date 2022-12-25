@@ -22,9 +22,8 @@ font-size: 18px;
 }
 `
 const Number = styled.span`
-font-style: italic;
 margin-left: 5px;
-font-size: 10px;
+font-size: 12px;
 @media screen and (min-width: 768px) {
 font-size: 16px;
 margin-left: 10px;

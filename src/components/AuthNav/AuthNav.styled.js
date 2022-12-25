@@ -5,16 +5,26 @@ const StyledLink = styled(NavLink)`
   color: ${(props)=>props.theme.text};
   text-decoration: none;
   background-color: ${(props)=>props.theme.main};
-  padding: 4px 6px;
   border-radius: 4px;
-  vertical-align: middle;
+  padding: 2px 5px;
   &:not(:last-child) {
-    margin-right: 20px;
-  }
-
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  } 
   &.active {
     box-shadow: 0 0 8px ${(props)=>props.theme.text}; 
   }
+  @media screen and (min-width: 768px) {
+  padding: 4px 6px;
+  &:not(:last-child) {
+  margin-right: 20px;
+  }
+} 
 `;
 
-export {StyledLink};
+const AuthMenu = styled.nav`
+display: flex;
+`
+
+export {StyledLink, AuthMenu};

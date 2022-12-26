@@ -44,7 +44,7 @@ const ContactEditorForm = () => {
     }
     dispatch(editContact(contactId));
     closeModal();
-    // DefaultValue();
+    DefaultValue();
   };
 
   

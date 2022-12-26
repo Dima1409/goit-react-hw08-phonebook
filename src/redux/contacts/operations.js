@@ -24,10 +24,14 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
 
 
 
-export const editContact = createAsyncThunk('contacts/editContact', async (id, thunkApi) => {
+export const editContact = createAsyncThunk('contacts/editContact', async (item, thunkApi) => {
     try {
-        const response = await axios.patch(`/contacts/${id}`)
-        console.log(response.data, 'from operations edit')
+        
+        console.warn('--------------------start operation update')
+        const contact = (JSON.parse(item));
+        const response = await axios.patch(`/contacts/${contact.id}`)
+        console.log(response)
+        // console.log(response.data, 'finish operations update')
         return response.data;
     } catch (e) {
         console.log(e.message, '--------error message')
@@ -38,7 +42,7 @@ export const editContact = createAsyncThunk('contacts/editContact', async (id, t
 export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, thunkApi) => {
     try {
         const response = await axios.delete(`/contacts/${id}`)
-        console.log(response.data);
+        console.log(response.data, '---------------operation delete');
         return response.data;
     }
     catch(e) {

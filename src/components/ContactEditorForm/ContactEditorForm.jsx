@@ -42,11 +42,20 @@ const ContactEditorForm = () => {
     if (someCopyItem) {
       return alert(`${name} is already in contacts`);
     }
-    dispatch(editContact(contactId));
+    const obj = {
+      id: contactId,
+      name,
+      number
+    }
+    
+    console.log(JSON.stringify(obj))
+    dispatch(editContact(JSON.stringify(obj)));
+    
+    
     closeModal();
     DefaultValue();
   };
-
+  
   
   const DefaultValue = () => {
     setName('');

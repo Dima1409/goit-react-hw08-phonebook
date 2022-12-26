@@ -26,34 +26,39 @@ const contactsSlice = createSlice({
     builder.addCase(fetchContacts.rejected, handleRejected);
     builder.addCase(addContact.rejected, handleRejected);
     builder.addCase(deleteContact.rejected, handleRejected);
-
     builder.addCase(editContact.pending, handlePending);
     builder.addCase(editContact.rejected, handleRejected);
+    
+    //? update contact
     builder.addCase(editContact.fulfilled, (state, action) => {
+      console.log('a')
       state.isLoading = false;
       state.error = null;
-      const newItem = state.items.map((elem)=>{
-        if(elem.name ===action.payload.name) {
-          elem = action.payload;
-        }
-        console.log(elem)
-        return elem;
-      })
-      console.log(newItem,'form edit')
+      // const newItem = state.items.map((elem)=>{
+      //   if(elem.id === action.payload.id) {
+      //     elem = action.payload;
+      //   }
+      //   return elem;
+      // })
+      // state.items = newItem;
+      state.items = action.payload.id
     });
 
-    
+    //? fetch all contacts
     builder.addCase(fetchContacts.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
     });
+
+    //? add new contact
     builder.addCase(addContact.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
       state.items.push(action.payload);
     });
-
+ 
+    //? delete contact
     builder.addCase(deleteContact.fulfilled, (state, action) => {
        state.isLoading = false;
        state.error = null;

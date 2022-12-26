@@ -8,12 +8,14 @@ padding: 20px 10px;
 margin: 0 auto;
 margin-bottom: 12px;
 border-radius: 8px;
+box-shadow: 0 2px 8px ${(props)=>props.theme.text};
 @media screen and (min-width: 768px) {
 max-width: 40%;
 padding: 40px 20px;
 }
 `;
 const LabelForm = styled.label`
+position: relative;
 font-size: 16px;
 text-align: start;
 margin-bottom: 5px;
@@ -27,7 +29,7 @@ font-size: 22px;
 
 const LabelInput = styled.input`
 margin-left: 10px;
-width: 100%;
+width: 65%;
 padding: 6px;
 font-size: 14px;
 outline: none;
@@ -55,7 +57,7 @@ margin: 10px auto;
 padding: 6px;
 color: #13132e;
 background-color: #ccca41;
-max-width: 90px;
+max-width: 140px;
 font-size: 14px;
 border: none;
 border-radius: 4px;

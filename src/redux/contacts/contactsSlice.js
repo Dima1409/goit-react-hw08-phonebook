@@ -21,8 +21,6 @@ const contactsSlice = createSlice({
   initialState: contactsState,
   extraReducers: (builder) => {
     builder.addCase(fetchContacts.pending, handlePending);
-    // builder.addCase(getContactById.pending, handlePending);
-    // builder.addCase(getContactById.rejected, handleRejected);
     builder.addCase(addContact.pending, handlePending);
     builder.addCase(deleteContact.pending, handlePending);
     builder.addCase(fetchContacts.rejected, handleRejected);
@@ -34,8 +32,14 @@ const contactsSlice = createSlice({
     builder.addCase(editContact.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.items = state.items.map((elem)=>elem.id===action.payload.id)
-      console.log(state.items,'form edit')
+      const newItem = state.items.map((elem)=>{
+        if(elem.name ===action.payload.name) {
+          elem = action.payload;
+        }
+        console.log(elem)
+        return elem;
+      })
+      console.log(newItem,'form edit')
     });
 
     
@@ -62,3 +66,6 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
+
+
+

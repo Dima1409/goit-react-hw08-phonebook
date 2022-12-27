@@ -36,12 +36,6 @@ const ContactEditorForm = () => {
   
   const SubmitForm = e => {
     e.preventDefault();
-    const someCopyItem = contacts.some(
-      elem => elem.name.toLowerCase() === name.toLowerCase()
-    );
-    if (someCopyItem) {
-      return alert(`${name} is already in contacts`);
-    }
     const obj = {
       id: contactId,
       name,

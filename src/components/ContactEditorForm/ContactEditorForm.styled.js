@@ -18,5 +18,10 @@ export const Modal = styled.div`
   @media screen and (min-width: 768px) {
 font-size: 16px;
 }
-
 `;
+
+export const Buttons = styled.div`
+margin-top: 20px;
+display: flex;
+justify-content: space-around;
+`

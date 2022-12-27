@@ -68,7 +68,7 @@ font-size: 22px;
 }
 &:hover:not(:disabled) {
     cursor: pointer;
-    box-shadow: red;;
+    box-shadow: 0 0 8px ${(props)=>props.theme.text};
 }
 &:disabled {
     background-color: grey;

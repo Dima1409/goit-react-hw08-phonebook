@@ -99,7 +99,7 @@ cursor: pointer;
 &:hover:not(:disabled) > svg, 
 &:focus > svg, 
 &:active > svg{
-    color: #9c1111;
+    color: orange;
     animation-name: ${animDelete};
     animation-duration: 1s;
     animation-iteration-count: infinite;

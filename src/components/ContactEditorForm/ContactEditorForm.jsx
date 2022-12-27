@@ -1,7 +1,7 @@
 import { Form, LabelForm, LabelInput, ButtonSubmit } from 'components/Form/Form.styled';
 import { useNavigate, useParams} from 'react-router-dom';
 import { useDispatch} from 'react-redux';
-import { Overlay, Modal } from './ContactEditorForm.styled';
+import { Overlay, Modal, Buttons } from './ContactEditorForm.styled';
 import { editContact} from 'redux/contacts/operations';
 import useContactSelectors from 'hooks/useContactSelectors';
 import { useState } from 'react';
@@ -47,11 +47,7 @@ const ContactEditorForm = () => {
       name,
       number
     }
-    
-    console.log(JSON.stringify(obj))
-    dispatch(editContact(JSON.stringify(obj)));
-    
-    
+    dispatch(editContact(obj));
     closeModal();
     DefaultValue();
   };
@@ -71,15 +67,15 @@ const ContactEditorForm = () => {
                 <span>Name</span>
                 <LabelInput name="name" type="text" onChange={InputChange}  value={name}/>
               </LabelForm>
-              <br />
               <LabelForm>
                 <span>Number</span>
                 <LabelInput name="number" type="tel" onChange={InputChange} value={number}/>
               </LabelForm>
-              <br />
-              <ButtonSubmit type="submit">save</ButtonSubmit>
-              
+              <Buttons>
+              <ButtonSubmit type="submit" disabled={!name || !number}>save</ButtonSubmit>
               <ButtonSubmit type="button" onClick={closeModal} >close</ButtonSubmit>
+              </Buttons>
+              
             </Form>
         </Modal>
         

@@ -31,17 +31,14 @@ const contactsSlice = createSlice({
     
     //? update contact
     builder.addCase(editContact.fulfilled, (state, action) => {
-      console.log('a')
       state.isLoading = false;
       state.error = null;
-      // const newItem = state.items.map((elem)=>{
-      //   if(elem.id === action.payload.id) {
-      //     elem = action.payload;
-      //   }
-      //   return elem;
-      // })
-      // state.items = newItem;
-      state.items = action.payload.id
+      state.items = state.items.map((elem) => {
+        if(elem.id===action.payload.id) {
+          elem = action.payload;
+        }
+        return elem;
+      });
     });
 
     //? fetch all contacts
